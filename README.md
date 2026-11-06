@@ -57,3 +57,5 @@ Repositoryt är byggt för att kunna användas stegvis:
 visa på CI 123
 
 ## lägger till en rad för dag1
+
+Nu ska jag vara på rätt väg...
