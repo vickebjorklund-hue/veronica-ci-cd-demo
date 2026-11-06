@@ -55,3 +55,5 @@ Repositoryt är byggt för att kunna användas stegvis:
 
 > Vilket problem löser detta steg, och vad riskerar vi om steget saknas?
 visa på CI 123
+
+## lägger till en rad för dag1
