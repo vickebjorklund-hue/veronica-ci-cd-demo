@@ -17,3 +17,10 @@ def api_add(a: int, b: int):
 @app.get("/api/divide")
 def api_divide(a: float, b: float):
     return {"result": divide(a, b)}
+
+@app.get("/version")
+def version():
+    return {
+        "version": "1.1",
+        "environment": "demo",
+    }
