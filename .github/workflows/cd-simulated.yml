@@ -38,7 +38,16 @@ jobs:
 
           docker logs devops25-app
           exit 1
-
+       
+      - name: Verify deployed version
+        run: |
+          set -o pipefail
+          echo "Checking deployed application version..."
+          curl --fail --silent --show-error http://localhost:8000/version
+          echo
+          curl --fail --silent --show-error http://localhost:8000/version | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d["version"] == "1.1"'
+          echo "Correct application version deployed"
+      
       - name: Stop application
         if: always()
         run: |
