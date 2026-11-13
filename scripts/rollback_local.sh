@@ -1,4 +1,19 @@
-#!/usr/bin/env bash
-set -euo pipefail
-echo "Rollback demo: replace this with your previous known-good image strategy."
-echo "In a real environment, rollback requires versioned artifacts/images."
+#!/bin/bash
+set -e
+
+echo "=== Starting rollback ==="
+
+docker image inspect devops25-cicd-demo:v1 > /dev/null
+
+docker rm -f devops25-app 2>/dev/null || true
+
+docker run -d \
+  --name devops25-app \
+  -p 8000:8000 \
+  devops25-cicd-demo:v1
+
+bash scripts/verify.sh
+
+docker inspect --format '{{.Config.Image}}' devops25-app
+
+echo "=== Rollback completed ==="

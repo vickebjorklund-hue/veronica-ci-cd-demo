@@ -1,4 +1,7 @@
 #!/bin/bash
+set -e
+
+echo "=== Starting local deploy ==="
 
 docker build -t devops25-cicd-demo:local .
 
@@ -8,3 +11,5 @@ docker run -d \
   --name devops25-app \
   -p 8000:8000 \
   devops25-cicd-demo:local
+
+echo "=== Deploy completed ==="
